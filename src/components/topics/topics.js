@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { topicsList } from '../../data/topicsList';
+import { useSelector } from 'react-redux';
+import { selectTopics } from '../../features/topics/topicsSlice';
 
 const Topics = () => {
+    const topics = useSelector(selectTopics);
+
     return (
         <div className='topics div-column'>
             <h2>Topics</h2>
             {
-                topicsList.map((topicItem) => (
-                    <div className='topic-list'>
-                        <li className='topic-item' key={topicItem.topicId}>
-                            <Link to={`/topics/${topicItem.topicId}`}>
-                                <h3>{topicItem.topicName}</h3>
+                Object.values(topics).map((topicItem) => (
+                    <div className='topic-list' key={topicItem.id}>
+                        <li className='topic-item'>
+                            <Link to={`/topics/${topicItem.id}`}>
+                                <h3>{topicItem.name}</h3>
                             </Link>
                         </li>
                     </div>
