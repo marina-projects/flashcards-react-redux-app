@@ -1,12 +1,12 @@
 import './App.css';
-import Header from './components/header/header';
+import Header from '../components/header/header';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import Topics from './components/topics/topics';
-import Quizzes from './components/quizzes/quizzes';
-import NewQuiz from './components/newQuiz/newQuiz';
-import Topic from './components/topic/topic';
-import Quiz from './components/quiz/quiz';
-import NewTopic from './components/newTopic/newTopic';
+import Topics from '../components/topics/topics';
+import Quizzes from '../components/quizzes/quizzes';
+import NewQuiz from '../components/newQuiz/newQuiz';
+import Topic from '../components/topic/topic';
+import Quiz from '../components/quiz/quiz';
+import NewTopic from '../components/newTopic/newTopic';
 
 function App() {
   return (
