@@ -1,0 +1,9 @@
+.new-quiz form, .new-card-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttons-area {
+    justify-content: space-between;
+}

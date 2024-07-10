@@ -1,0 +1,19 @@
+.header ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+
+
+.header {
+    background-color: blueviolet;
+    color: white;
+    text-transform: uppercase;
+    height: 70px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
