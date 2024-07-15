@@ -21,14 +21,14 @@ const NewTopic = () => {
 
     return (
         <div className="create-new-topic div-column">
-            <h2>Create new topic</h2>
+            <h2>Add new entry</h2>
             <p>{name}</p>
             <form onSubmit={handleSubmit}>
                 <input 
                     id='topic-name'
                     value={name}
-                    type='text'
-                    placeholder="Topic Name"
+                    type='textarea'
+                    placeholder="Your entry"
                     onChange={(e) => setName(e.currentTarget.value)}
                 />
                 <button type='submit'>Submit</button>
