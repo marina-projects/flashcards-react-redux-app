@@ -22,6 +22,8 @@ const NewTopic = () => {
     return (
         <div className="create-new-topic div-column">
             <h2>Add new entry</h2>
+            <h3>Now it is another app and soon you will see a diary for dog owners</h3>
+
             <p>{name}</p>
             <form onSubmit={handleSubmit}>
                 <input 
