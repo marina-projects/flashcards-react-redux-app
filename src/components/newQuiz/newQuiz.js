@@ -1,67 +1,61 @@
 import React, { useState } from "react";
-import './newQuiz.css'
+import { useSelector, useDispatch } from "react-redux";
+import { selectTopics } from "../../features/topics/topicsSlice";
+import { addQuiz } from "../../features/quizzes/quizessSlice";
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+import './newQuiz.css';
 
 const NewQuiz = () => {
-    const [cards, setCards] = useState([]);
+    const topics = useSelector(selectTopics);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const addCardHandle = (e) => {
+    const [name, setName] = useState('');
+    const [selectedTopicId, setSelectedTopicId] = useState('');
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setCards([...cards, { front: '', back: '' }]);
-    }
-
-    const removeCardHandle = (index) => {
-        setCards(cards.filter((_, i) => i !== index));
-    }
-
-    const handleInputChange = (index, event) => {
-        const newCards = cards.map((card, i) => {
-            if (i === index) {
-                return { ...card, [event.target.name]: event.target.value };
-            }
-            return card;
-        });
-        setCards(newCards);
+        const newQuiz = {
+            id: uuidv4(),
+            name,
+            topicId: selectedTopicId,
+            cardIds: [] // Пока пустой массив
+        };
+        console.log("Creating new quiz:", newQuiz);
+        dispatch(addQuiz(newQuiz));
+        setName('');
+        setSelectedTopicId('');
+        navigate('/quizzes');
     }
 
     return (
         <div className="new-quiz div-column">
             <h2>New Quiz</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input 
                     id='quiz-name'
+                    value={name}
                     type='text'
                     placeholder="Quiz Name"
+                    onChange={(e) => setName(e.currentTarget.value)}
                 />
                 <select 
                     id='quiz-topic'
-                    placeholder='Topic'
+                    value={selectedTopicId}
+                    onChange={(e) => setSelectedTopicId(e.currentTarget.value)}
                 >
-                    <option>Topic</option>
+                    <option value='' disabled>Select a topic</option>
+                    {Object.values(topics).map((topic) => (
+                        <option key={topic.id} value={topic.id}>{topic.name}</option>
+                    ))}
                 </select>
-                {cards.map((card, index) => (
-                    <div key={index} className="new-card-area" style={{ display: 'flex' }}>
-                        <input 
-                            name='front'
-                            placeholder="Front"
-                            value={card.front}
-                            onChange={(e) => handleInputChange(index, e)}
-                        />
-                        <input 
-                            name='back'
-                            placeholder="Back"
-                            value={card.back}
-                            onChange={(e) => handleInputChange(index, e)}
-                        />
-                        <button onClick={(e) => {e.preventDefault(); removeCardHandle(index)}}>Remove card</button>
-                    </div>
-                ))}
                 <div className="buttons-area div-row">
-                    <button onClick={addCardHandle}>Add card</button>
                     <button type='submit'>Create Quiz</button>
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
 export default NewQuiz;

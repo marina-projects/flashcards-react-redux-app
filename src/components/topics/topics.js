@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectTopics } from '../../features/topics/topicsSlice';
+import { selectQuizzes } from '../../features/quizzes/quizessSlice';
 
 const Topics = () => {
     const topics = useSelector(selectTopics);
+    const quizzes = useSelector(selectQuizzes);
 
     return (
         <div className='topics div-column'>
