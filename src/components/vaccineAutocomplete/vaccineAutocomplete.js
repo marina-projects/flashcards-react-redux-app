@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { TextField } from "@mui/material";
 
 const filter = createFilterOptions();
 
 const VaccineAutocomplete = ({ nameVaccine, setNameVaccine }) => {
+    const [vaccinesNames, setVaccinesNames] = useState([
+        'Nobivak',
+        'Eurican'
+    ]);
+
     return (
         <div>
             <Autocomplete
@@ -15,6 +20,7 @@ const VaccineAutocomplete = ({ nameVaccine, setNameVaccine }) => {
                     } else if (newValue && newValue.inputValue) {
                         // Create a new value from the user input
                         setNameVaccine(newValue.inputValue);
+                        setVaccinesNames([...vaccinesNames, newValue.inputValue]); // Добавляем новое значение в массив
                     } else {
                         setNameVaccine(newValue ? newValue.title : newValue);
                     }
@@ -24,7 +30,7 @@ const VaccineAutocomplete = ({ nameVaccine, setNameVaccine }) => {
 
                     const { inputValue } = params;
                     // Suggest the creation of a new value
-                    const isExisting = options.some((option) => inputValue === option);
+                    const isExisting = options.some((option) => inputValue === option.title);
                     if (inputValue !== '' && !isExisting) {
                         filtered.push({
                             inputValue,
@@ -66,8 +72,3 @@ const VaccineAutocomplete = ({ nameVaccine, setNameVaccine }) => {
 }
 
 export default VaccineAutocomplete;
-
-const vaccinesNames = [
-    'Nobivak',
-    'Eurican'
-];

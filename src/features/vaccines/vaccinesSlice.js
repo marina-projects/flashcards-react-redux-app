@@ -16,6 +16,10 @@ const topicsSlice = createSlice({
                 quizIds: []
             };
             console.log("Vaccine added:", state.topics[id]);
+        },
+        removeVaccine: (state, action) => {
+            const { id } = action.payload;
+            delete state.topics[id];
         }
     },
     extraReducers: (builder) => {
@@ -34,5 +38,5 @@ const topicsSlice = createSlice({
 });
 
 export const selectTopics = (state) => state.topics.topics;
-export const { addVaccine } = topicsSlice.actions;
+export const { addVaccine, removeVaccine } = topicsSlice.actions;
 export default topicsSlice.reducer;

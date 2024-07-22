@@ -1,3 +1,18 @@
-.vaccine-item {
+.vaccines-list {
+    width: 50%;
+    
+}
+
+.vaccine-item-current {
     gap: 10px;
+    margin-bottom: -30px;
+
+}
+
+.vaccine-item {
+    width: 50%;
+}
+
+.delete-vaccine {
+    width: 25%;
 }
