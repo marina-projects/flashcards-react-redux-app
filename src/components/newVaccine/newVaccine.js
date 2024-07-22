@@ -7,43 +7,38 @@ import dayjs from 'dayjs';
 
 //redux
 import { useDispatch } from "react-redux";
-import { addVaccine } from "../../features/topics/topicsSlice";
+import { addVaccine } from "../../features/vaccines/vaccinesSlice";
 
 //components
 import { DatePicker } from "@mui/x-date-pickers";
 import TextField from '@mui/material/TextField';
-
-
+import VaccineAutocomplete from '../vaccineAutocomplete/vaccineAutocomplete';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import IconButton from '@mui/material/IconButton';
 
 const NewVaccine = () => {
 
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
     const [date, setDate] = useState(dayjs());
+    const [nameVaccine, setNameVaccine] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const newVaccine = {
             id: uuidv4(),
-            name,
+            nameVaccine,
             date: date.toISOString()
         };
         dispatch(addVaccine(newVaccine));
-        setName('')
     }
 
     return (
         <div className="create-new-vaccine div-column">
             <h4>Add new </h4>
-            <p>{name}</p>
-            <p>{date.toISOString()}</p>
             <form onSubmit={handleSubmit}>
-                <input 
-                    id='vaccine-name'
-                    value={name}
-                    type='textarea'
-                    placeholder="Name of vaccine"
-                    onChange={(e) => setName(e.currentTarget.value)}
+                <VaccineAutocomplete 
+                    nameVaccine={nameVaccine}
+                    setNameVaccine={setNameVaccine}
                 />
                 <DatePicker 
                     defaultValue={dayjs('2022-04-17')}
@@ -51,7 +46,9 @@ const NewVaccine = () => {
                     onChange={(newValue) => setDate(newValue)}
                     renderInput={(params) => <TextField {...params} />}
                 />
-                <button type='submit'>Submit</button>
+                <IconButton  type='submit'>
+                    <AddCircleOutlineIcon />
+                </IconButton>
             </form>
         </div>
     )

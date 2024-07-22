@@ -8,11 +8,11 @@ const topicsSlice = createSlice({
     },
     reducers: {
         addVaccine: (state, action) => {
-            const { id, name, date } = action.payload;
+            const { id, date, nameVaccine } = action.payload;
             state.topics[id] = {
                 id,
-                name,
                 date,
+                nameVaccine,
                 quizIds: []
             };
             console.log("Vaccine added:", state.topics[id]);

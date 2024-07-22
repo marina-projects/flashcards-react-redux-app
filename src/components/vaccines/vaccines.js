@@ -1,30 +1,33 @@
+import './vaccines.css';
+
+//libraries
 import React from 'react';
-import { Link } from 'react-router-dom';
+import dayjs from 'dayjs'; //for formatting date
+
+//redux
 import { useSelector } from 'react-redux';
-import { selectTopics } from '../../features/topics/topicsSlice';
-import { selectQuizzes } from '../../features/quizzes/quizessSlice';
+import { selectTopics } from '../../features/vaccines/vaccinesSlice';
+
+//components
 import NewVaccine from '../newVaccine/newVaccine';
 
 const Vaccines = () => {
     const vaccines = useSelector(selectTopics);
-    const quizzes = useSelector(selectQuizzes);
 
     return (
-        <div className='topics div-column'>
+        <div className='vaccines div-column'>
             <h2>Vaccines</h2>
             <NewVaccine />
             {
-                Object.values(vaccines).map((topicItem) => (
-                    <div className='topic-list' key={topicItem.id}>
-                        <li className='topic-item'>
-                            <Link to={`/topics/${topicItem.id}`}>
-                                <h3>{topicItem.name}</h3>
-                            </Link>
-                        </li>
+                Object.values(vaccines).map((vaccine) => (
+                    <div className='vaccines-list' key={vaccine.id}>
+                        <div className='vaccine-item div-row'>
+                            <h3>{vaccine.nameVaccine}</h3>
+                            <p>{dayjs(vaccine.date).format('DD.MM.YYYY')}</p> 
+                        </div>
                     </div>
                 ))
             }
-            
         </div>
     )
 }

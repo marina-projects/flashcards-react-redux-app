@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectTopics } from "../../features/topics/topicsSlice";
+import { selectTopics } from "../../features/vaccines/vaccinesSlice";
 import { addQuiz } from "../../features/quizzes/quizessSlice";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
