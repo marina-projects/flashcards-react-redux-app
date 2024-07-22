@@ -3,20 +3,29 @@
   width: 100%;
 }
 
-div {
+/* div {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} */
+
+
+.div-column {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.div-column {
-  flex-direction: column;
-}
-
 .div-row {
+  display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 li {

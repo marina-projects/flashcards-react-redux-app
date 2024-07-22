@@ -1,4 +1,4 @@
-.create-new-topic form {
+.create-new-vaccine form {
     display: flex;
     flex-direction: column;
     gap: 20px;

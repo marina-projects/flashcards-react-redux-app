@@ -8,7 +8,7 @@ const Header = () => {
             <div className="header">
 
             </div>
-            <div className="footer">
+            <div className="footer div-row">
                 <ul className="div-row">
                     <li><NavLink to='/'>Main</NavLink></li>
                     <li><NavLink to='/vaccines'>Vaccines</NavLink></li>
