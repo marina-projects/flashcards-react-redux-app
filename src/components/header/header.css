@@ -1,19 +1,29 @@
-.header ul {
+.header {
+    background-color: var(--main-green);
+    color: white;
+    text-transform: uppercase;
+    height: 50px;
+    /* position: fixed;
+    top: 0; */
+}
+
+
+.footer ul {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
 }
 
-
-
-.header {
-    background-color: blueviolet;
+.footer {
+    background-color: var(--main-green);
     color: white;
     text-transform: uppercase;
-    height: 70px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
 }
 
-.header a {
+.footer a {
     color: white;
     text-decoration: none;
 }

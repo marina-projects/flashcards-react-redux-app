@@ -22,3 +22,7 @@ div {
 li {
   list-style: none;
 }
+
+:root {
+  --main-green: #00A898;
+}

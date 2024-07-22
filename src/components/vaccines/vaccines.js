@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectTopics } from '../../features/topics/topicsSlice';
 import { selectQuizzes } from '../../features/quizzes/quizessSlice';
+import NewVaccine from '../newVaccine/newVaccine';
 
-const Topics = () => {
-    const topics = useSelector(selectTopics);
+const Vaccines = () => {
+    const vaccines = useSelector(selectTopics);
     const quizzes = useSelector(selectQuizzes);
 
     return (
         <div className='topics div-column'>
-            <h2>Topics</h2>
+            <h2>Vaccines</h2>
+            <NewVaccine />
             {
-                Object.values(topics).map((topicItem) => (
+                Object.values(vaccines).map((topicItem) => (
                     <div className='topic-list' key={topicItem.id}>
                         <li className='topic-item'>
                             <Link to={`/topics/${topicItem.id}`}>
@@ -22,9 +24,9 @@ const Topics = () => {
                     </div>
                 ))
             }
-            <Link to='/new-topic'>Create new topic</Link>
+            
         </div>
     )
 }
 
-export default Topics;
+export default Vaccines;

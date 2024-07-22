@@ -4,26 +4,24 @@ import { useDispatch } from "react-redux";
 import { addTopic } from "../../features/topics/topicsSlice";
 import { v4 as uuidv4 } from "uuid";
 
-const NewTopic = () => {
+const NewVaccine = () => {
 
     const dispatch = useDispatch();
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newTopic = {
+        const newVaccine = {
             id: uuidv4(),
             name,
         };
-        dispatch(addTopic(newTopic));
+        dispatch(addTopic(newVaccine));
         setName('')
     }
 
     return (
         <div className="create-new-topic div-column">
-            <h2>Add new entry</h2>
-            <h3>Now it is another app and soon you will see a diary for dog owners</h3>
-
+            <h4>Add new </h4>
             <p>{name}</p>
             <form onSubmit={handleSubmit}>
                 <input 
@@ -39,4 +37,4 @@ const NewTopic = () => {
     )
 }
 
-export default NewTopic;
+export default NewVaccine;

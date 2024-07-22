@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectQuizzes } from "../../features/quizzes/quizessSlice";
 
-const Quizzes = () => {
+const Treatments = () => {
     const quizzes = useSelector(selectQuizzes);
 
     return (
         <div className="quizzes div-column">
-            <h2>Quizzes</h2>
+            <h2>Treatments</h2>
             {
                 Object.values(quizzes).map((quiz) => (
                     <div className="quizzes-list div-column" key={quiz.id}>
@@ -20,9 +20,9 @@ const Quizzes = () => {
                     </div>
                 ))
             }
-            <Link to='/new-quiz'>Create new quiz</Link>
+            <Link to='/new-quiz'>Add new treatment</Link>
         </div>
     )
 }
 
-export default Quizzes;
+export default Treatments;
