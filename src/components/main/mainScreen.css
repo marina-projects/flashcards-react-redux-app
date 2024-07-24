@@ -17,6 +17,6 @@
     width: 25%;
 }
 
-.add-vaccine-main .modal-button-vaccine-text, .add-treatment-main .modal-button-flea-text {
+.add-vaccine-main .modal-button-vaccine-text, .add-treatment-main .modal-button-flea-text, .add-treatment-main .modal-button-worm-text {
     display: none;
 }

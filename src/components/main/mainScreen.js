@@ -8,21 +8,28 @@ import dayjs from "dayjs";
 import { useSelector } from "react-redux";
 import { selectTopics } from '../../features/vaccines/vaccinesSlice';
 import { selectFleaTreatments } from '../../features/fleaTreatmentSlice/fleaTreatmentSlice';
+import { selectWormTreatments } from '../../features/wormTreatmentSlice/wormTreatmentSlice';
 
 //components
 import PopupVaccine from '../popupVaccine/popupVaccine';
 import PopupFleaTreatment from '../popupFleaTreatment/popupFleaTreatment';
+import PopupWormTreatment from '../popupWormTreatment/popupWormTreatment';
 
 const MainScreen = () => {
 
     const vaccines = useSelector(selectTopics);
     const fleaTreatments = useSelector(selectFleaTreatments);
+    const wormTreatments = useSelector(selectWormTreatments);
 
     const sortedVaccines = Object.values(vaccines).sort((a, b) => dayjs(a.date).diff(dayjs(b.date)));
     const sortedFleaTreatments = Object.values(fleaTreatments).sort((a, b) => dayjs(a.date).diff(dayjs(b.date)));
+    const sortedWormTreatments = Object.values(wormTreatments).sort((a, b) => dayjs(a.date).diff(dayjs(b.date)));
+
 
     const latestVaccine = sortedVaccines.slice(-1)[0]; // Получаем последнюю вакцину
     const latestFleaTreatment = sortedFleaTreatments.slice(-1)[0]; // Получаем последнюю обработку
+    const latestWormTreatment = sortedWormTreatments.slice(-1)[0]; // Получаем последнюю обработку
+
 
     return (
         <div className="main-screen div-column">
@@ -60,6 +67,23 @@ const MainScreen = () => {
                         </div>
                     </div>
                 ) : <p>No flea treatments available</p>
+            }
+            <h2>Worm treatments</h2>
+            {
+                latestWormTreatment ? (
+                    <div className='vaccines-list div-row' key={latestWormTreatment.id}>
+                        <div className='vaccine-item div-column'>
+                            <div className='vaccine-item-current div-row'>
+                                <h3>{latestWormTreatment.nameVaccine}</h3>
+                                <h4>{dayjs(latestWormTreatment.date).format('DD.MM.YYYY')}</h4>
+                            </div>
+                            <p>Next vaccine: {dayjs(latestWormTreatment.date).add(1, 'year').format('DD.MM.YYYY')}</p>
+                        </div>
+                        <div className='add-treatment-main'>
+                            <PopupWormTreatment />
+                        </div>
+                    </div>
+                ) : <p>No worm treatments available</p>
             }
         </div>
     )

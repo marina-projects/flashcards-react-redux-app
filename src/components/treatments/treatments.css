@@ -17,6 +17,6 @@
     width: 25%;
 }
 
-.treatments .modal-button-flea-icon {
+.treatments .modal-button-flea-icon, .treatments .modal-button-worm-icon {
     display: none;
 }
