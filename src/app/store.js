@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import topicsReducer from '../features/vaccines/vaccinesSlice';
-import quizzesReducer from '../features/quizzes/quizessSlice'
+import fleaTreatmentsReducer from '../features/fleaTreatmentSlice/fleaTreatmentSlice';
 
 export const store = configureStore({
     reducer: {
         topics: topicsReducer,
-        quizzes: quizzesReducer
+        fleaTreatments: fleaTreatmentsReducer
     }
 });

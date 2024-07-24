@@ -1,22 +1,22 @@
-.vaccines-list {
+.treatments-list {
     width: 50%;
     
 }
 
-.vaccine-item-current {
+.treatment-item-current {
     gap: 10px;
     margin-bottom: -30px;
 
 }
 
-.vaccine-item {
+.treatment-item {
     width: 50%;
 }
 
-.delete-vaccine {
+.delete-treatment {
     width: 25%;
 }
 
-.vaccines .modal-button-vaccine-icon {
+.treatments .modal-button-flea-icon {
     display: none;
 }

@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline'; // Импортируем C
 
 //components
 import Header from '../components/header/header';
-import NewQuiz from '../components/newQuiz/newQuiz';
+import NewFleaTreatment from '../components/newFleaTreatment/newFleaTreatment';
 import Topic from '../components/topic/topic';
 import Quiz from '../components/quiz/quiz';
 import MainScreen from '../components/main/mainScreen';
@@ -27,7 +27,7 @@ function App() {
             <Route index element={<MainScreen />}/>
             <Route path='/vaccines' element={<Vaccines />} />
             <Route path='/treatments' element={<Treatments />} />
-            <Route path='/add-new' element={<NewQuiz />} />
+            <Route path='/add-new' element={<NewFleaTreatment />} />
             <Route path='/topics/:topicId' element={<Topic />} />
             <Route path='/quizzes/:quizId' element={<Quiz />} />
             

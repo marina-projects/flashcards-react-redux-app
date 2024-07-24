@@ -11,8 +11,9 @@ import { removeVaccine } from '../../features/vaccines/vaccinesSlice';
 import { useDispatch } from 'react-redux';
 
 //components
-import NewVaccine from '../newVaccine/newVaccine';
 import ClearIcon from '@mui/icons-material/Clear';
+import PopupVaccine from '../popupVaccine/popupVaccine';
+
 
 const Vaccines = () => {
     const vaccines = useSelector(selectTopics);
@@ -27,7 +28,8 @@ const Vaccines = () => {
     return (
         <div className='vaccines div-column'>
             <h2>Vaccines</h2>
-            <NewVaccine />
+            <PopupVaccine />
+            
             {
                 sortedVaccines.map((vaccine) => (
                     <div className='vaccines-list div-row' key={vaccine.id}>

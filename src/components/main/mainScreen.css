@@ -10,13 +10,13 @@
 }
 
 .vaccine-item {
-    width: 50%;
+    width: 100%;
 }
 
 .delete-vaccine {
     width: 25%;
 }
 
-.vaccines .modal-button-vaccine-icon {
+.add-vaccine-main .modal-button-vaccine-text, .add-treatment-main .modal-button-flea-text {
     display: none;
 }
