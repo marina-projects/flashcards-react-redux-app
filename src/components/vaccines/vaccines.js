@@ -35,7 +35,7 @@ const Vaccines = () => {
                     <div className='vaccines-list div-row' key={vaccine.id}>
                         <div className='vaccine-item div-column'>
                             <div className='vaccine-item-current div-row'>
-                                <h3>{vaccine.nameVaccine}</h3>
+                                <h3>{vaccine.name}</h3>
                                 <h4>{dayjs(vaccine.date).format('DD.MM.YYYY')}</h4>
                             </div>
                             <p>Next vaccine: {dayjs(vaccine.date).add(1, 'year').format('DD.MM.YYYY')}</p>

@@ -7,11 +7,11 @@ const topicsSlice = createSlice({
     },
     reducers: {
         addVaccine: (state, action) => {
-            const { id, date, nameVaccine } = action.payload;
+            const { id, date, name } = action.payload;
             state.topics[id] = {
                 id,
                 date,
-                nameVaccine,
+                name,
             };
             console.log("Vaccine added:", state.topics[id]);
         },

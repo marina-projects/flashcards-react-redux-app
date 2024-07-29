@@ -14,7 +14,8 @@ import { DatePicker } from "@mui/x-date-pickers";
 import TextField from '@mui/material/TextField';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from '@mui/material/IconButton';
-import FleaTreatmentAutocomplete from '../fleaTreatmentAutocomplete/fleaTreatmentAutocomplete';
+// import FleaTreatmentAutocomplete from '../fleaTreatmentAutocomplete/fleaTreatmentAutocomplete';
+import TreatmentAutocomplete from '../treatmentAutocomplete/treatmentAutocomplete';
 
 const NewFleaTreatment = () => {
     const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const NewFleaTreatment = () => {
         <div className="create-new-vaccine div-column">
             <h4>Add new flea treatment</h4>
             <form onSubmit={handleSubmit}>
-                <FleaTreatmentAutocomplete 
+                <TreatmentAutocomplete 
+                    treatmentType="flea-treatments"
                     name={name}
                     setName={setName}
                 />

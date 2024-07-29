@@ -14,7 +14,8 @@ import { DatePicker } from "@mui/x-date-pickers";
 import TextField from '@mui/material/TextField';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from '@mui/material/IconButton';
-import WormTreatmentAutocomplete from '../wormTreatmentAutocomplete/wormTreatmentAutocomplete';
+// import WormTreatmentAutocomplete from '../wormTreatmentAutocomplete/wormTreatmentAutocomplete';
+import TreatmentAutocomplete from '../treatmentAutocomplete/treatmentAutocomplete';
 
 const NewWormTreatment = () => {
     const dispatch = useDispatch();
@@ -36,9 +37,10 @@ const NewWormTreatment = () => {
         <div className="create-new-vaccine div-column">
             <h4>Add new worm treatment</h4>
             <form onSubmit={handleSubmit}>
-                <WormTreatmentAutocomplete
+                <TreatmentAutocomplete
                     name={name}
                     setName={setName}
+                    treatmentType="worm-treatments"
                 />
                 <DatePicker 
                     defaultValue={dayjs('2022-04-17')}

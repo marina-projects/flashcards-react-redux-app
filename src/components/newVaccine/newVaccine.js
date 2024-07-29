@@ -12,21 +12,22 @@ import { addVaccine } from "../../features/vaccines/vaccinesSlice";
 //components
 import { DatePicker } from "@mui/x-date-pickers";
 import TextField from '@mui/material/TextField';
-import VaccineAutocomplete from '../vaccineAutocomplete/vaccineAutocomplete';
+// import VaccineAutocomplete from '../vaccineAutocomplete/vaccineAutocomplete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from '@mui/material/IconButton';
+import TreatmentAutocomplete from '../treatmentAutocomplete/treatmentAutocomplete';
 
 const NewVaccine = () => {
 
     const dispatch = useDispatch();
     const [date, setDate] = useState(dayjs());
-    const [nameVaccine, setNameVaccine] = useState('');
+    const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const newVaccine = {
             id: uuidv4(),
-            nameVaccine,
+            name,
             date: date.toISOString()
         };
         dispatch(addVaccine(newVaccine));
@@ -36,9 +37,10 @@ const NewVaccine = () => {
         <div className="create-new-vaccine div-column">
             <h4>Add new </h4>
             <form onSubmit={handleSubmit}>
-                <VaccineAutocomplete 
-                    nameVaccine={nameVaccine}
-                    setNameVaccine={setNameVaccine}
+                <TreatmentAutocomplete
+                    name={name}
+                    setName={setName}
+                    treatmentType="vaccine-treatments"
                 />
                 <DatePicker 
                     defaultValue={dayjs('2022-04-17')}

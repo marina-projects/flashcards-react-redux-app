@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import { TextField } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTreatments, selectFleaTreatments, selectWormTreatments, selectVaccineTreatments, addTreatment } from "../../features/treatmentsSlice/treatmentsSlice";
 
 const filter = createFilterOptions();
 
-const WormTreatmentAutocomplete = ({ name, setName }) => {
-    const [treatmentNames, setTreatmentNames] = useState([
-        'Milprazon',
-        'Drontal'
-    ]);
+const TreatmentAutocomplete = ({ treatmentType, name, setName }) => {
+    const dispatch = useDispatch();
+    const treatmentNames = useSelector(state => {
+        if (treatmentType === 'flea-treatments') return selectFleaTreatments(state);
+        if (treatmentType === 'worm-treatments') return selectWormTreatments(state);
+        if (treatmentType === 'vaccine-treatments') return selectVaccineTreatments(state);
+        return [];
+    });
+
+    useEffect(() => {
+        dispatch(fetchTreatments(treatmentType));
+    }, [dispatch, treatmentType]);
+
+    const handleAddTreatment = (newTreatmentName) => {
+        const newTreatment = { name: newTreatmentName };
+        dispatch(addTreatment({ treatmentType, newTreatment }));
+    };
 
     return (
         <div>
@@ -18,23 +32,20 @@ const WormTreatmentAutocomplete = ({ name, setName }) => {
                     if (typeof newValue === 'string') {
                         setName(newValue);
                     } else if (newValue && newValue.inputValue) {
-                        // Create a new value from the user input
                         setName(newValue.inputValue);
-                        setTreatmentNames([...treatmentNames, newValue.inputValue]); // Добавляем новое значение в массив
+                        handleAddTreatment(newValue.inputValue);
                     } else {
-                        setName(newValue ? newValue.title : newValue);
+                        setName(newValue ? newValue.name : newValue);
                     }
                 }}
                 filterOptions={(options, params) => {
                     const filtered = filter(options, params);
-
                     const { inputValue } = params;
-                    // Suggest the creation of a new value
-                    const isExisting = options.some((option) => inputValue === option.title);
+                    const isExisting = options.some((option) => inputValue === option.name);
                     if (inputValue !== '' && !isExisting) {
                         filtered.push({
                             inputValue,
-                            title: `Add "${inputValue}"`,
+                            name: `Add "${inputValue}"`,
                         });
                     }
                     return filtered;
@@ -43,22 +54,19 @@ const WormTreatmentAutocomplete = ({ name, setName }) => {
                 clearOnBlur
                 handleHomeEndKeys
                 id="free-solo-with-text-demo"
-                options={treatmentNames.map((name) => ({ title: name }))}
+                options={treatmentNames.map((treatment) => ({ name: treatment.name }))}
                 getOptionLabel={(option) => {
-                    // Value selected with enter, right from the input
                     if (typeof option === 'string') {
                         return option;
                     }
-                    // Add "xxx" option created dynamically
                     if (option.inputValue) {
                         return option.inputValue;
                     }
-                    // Regular option
-                    return option.title;
+                    return option.name;
                 }}
                 renderOption={(props, option) => (
                     <li {...props}>
-                        {option.title}
+                        {option.name}
                     </li>
                 )}
                 sx={{ width: 300 }}
@@ -71,4 +79,4 @@ const WormTreatmentAutocomplete = ({ name, setName }) => {
     );
 }
 
-export default WormTreatmentAutocomplete;
+export default TreatmentAutocomplete;
