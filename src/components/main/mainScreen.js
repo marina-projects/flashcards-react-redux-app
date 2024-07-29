@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 //redux
 import { useSelector } from "react-redux";
-import { selectTopics } from '../../features/vaccines/vaccinesSlice';
+import { selectVaccines } from '../../features/vaccines/vaccinesSlice';
 import { selectFleaTreatments } from '../../features/fleaTreatmentSlice/fleaTreatmentSlice';
 import { selectWormTreatments } from '../../features/wormTreatmentSlice/wormTreatmentSlice';
 
@@ -17,7 +17,7 @@ import PopupWormTreatment from '../popupWormTreatment/popupWormTreatment';
 
 const MainScreen = () => {
 
-    const vaccines = useSelector(selectTopics);
+    const vaccines = useSelector(selectVaccines);
     const fleaTreatments = useSelector(selectFleaTreatments);
     const wormTreatments = useSelector(selectWormTreatments);
 

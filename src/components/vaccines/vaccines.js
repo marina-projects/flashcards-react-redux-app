@@ -6,7 +6,7 @@ import dayjs from 'dayjs'; //for formatting date
 
 //redux
 import { useSelector } from 'react-redux';
-import { selectTopics } from '../../features/vaccines/vaccinesSlice';
+import { selectVaccines } from '../../features/vaccines/vaccinesSlice';
 import { removeVaccine } from '../../features/vaccines/vaccinesSlice';
 import { useDispatch } from 'react-redux';
 
@@ -16,7 +16,7 @@ import PopupVaccine from '../popupVaccine/popupVaccine';
 
 
 const Vaccines = () => {
-    const vaccines = useSelector(selectTopics);
+    const vaccines = useSelector(selectVaccines);
     const dispatch = useDispatch();
 
     const handleRemove = (id) => {

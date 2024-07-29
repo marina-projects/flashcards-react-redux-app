@@ -1,28 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const topicsSlice = createSlice({
-    name: 'topics',
+const vaccinesSlice = createSlice({
+    name: 'vaccines',
     initialState: {
-        topics: {}
+        vaccines: {}
     },
     reducers: {
         addVaccine: (state, action) => {
             const { id, date, name } = action.payload;
-            state.topics[id] = {
+            state.vaccines[id] = {
                 id,
                 date,
                 name,
             };
-            console.log("Vaccine added:", state.topics[id]);
         },
         removeVaccine: (state, action) => {
             const { id } = action.payload;
-            delete state.topics[id];
+            delete state.vaccines[id];
         }
     },
 
 });
 
-export const selectTopics = (state) => state.topics.topics;
-export const { addVaccine, removeVaccine } = topicsSlice.actions;
-export default topicsSlice.reducer;
+export const selectVaccines = (state) => state.vaccines.vaccines;
+export const { addVaccine, removeVaccine } = vaccinesSlice.actions;
+export default vaccinesSlice.reducer;
