@@ -5,6 +5,8 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import CssBaseline from '@mui/material/CssBaseline'; // Импортируем CssBaseline
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 
 //components
@@ -26,9 +28,7 @@ function App() {
             <Route index element={<MainScreen />}/>
             <Route path='/vaccines' element={<Vaccines />} />
             <Route path='/treatments' element={<Treatments />} />
-            <Route path='/add-new' element={<NewFleaTreatment />} />
-           
-            
+            <Route path='/add-new' element={<NewFleaTreatment />} />        
           </Route>
         </Routes>
     </BrowserRouter> 

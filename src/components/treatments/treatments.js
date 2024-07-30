@@ -1,15 +1,21 @@
 import './treatments.css';
 
+//libraries
 import React from "react";
 import dayjs from "dayjs";
 
+//redux
 import { useSelector, useDispatch } from "react-redux";
 import { removeFleaTreatment, selectFleaTreatments } from "../../features/fleaTreatmentSlice/fleaTreatmentSlice";
 import { selectWormTreatments, removeWormTreatment } from '../../features/wormTreatmentSlice/wormTreatmentSlice';
 
+//components
 import PopupFleaTreatment from '../popupFleaTreatment/popupFleaTreatment';
-import ClearIcon from '@mui/icons-material/Clear';
 import PopupWormTreatment from '../popupWormTreatment/popupWormTreatment';
+
+//styles
+import { DeleteTreatmentItem, TreatmentCardsWrapper, TreatmentItemWrapper, H3, P } from '../../styles';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 const Treatments = () => {
@@ -31,45 +37,38 @@ const Treatments = () => {
     return (
         <div className='treatments div-column'>
             <h2>Treatments</h2>
-            <h3>Flea treatments</h3>
+            <H3>Flea treatments</H3>
             <PopupFleaTreatment />
-            
             {
                 sortedFleaTreatments.map((treatment) => (
-                    <div className='treatments-list div-row' key={treatment.id}>
-                        <div className='treatment-item div-column'>
-                            <div className='treatment-item-current div-row'>
-                                <h3>{treatment.name}</h3>
-                                <h4>{dayjs(treatment.date).format('DD.MM.YYYY')}</h4>
-                            </div>
-                            <p>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</p>
-                        </div>
-                        <div className='delete-treatment'>
+                    <TreatmentCardsWrapper key={treatment.id}>
+                        <TreatmentItemWrapper >
+                            <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
+                            <P>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</P>
+                        </TreatmentItemWrapper>
+                        <DeleteTreatmentItem>
                             <ClearIcon 
                                 onClick={() => handleRemoveFleaTreatment(treatment.id)}
                             />
-                        </div>
-                    </div>
+                        </DeleteTreatmentItem>
+                    </TreatmentCardsWrapper>
                 ))
             }
-            <h3>Worm treatments</h3>
+            <H3>Worm treatments</H3>
             <PopupWormTreatment />
             {
                 sortedWormTreatments.map((treatment) => (
-                    <div className='treatments-list div-row' key={treatment.id}>
-                        <div className='treatment-item div-column'>
-                            <div className='treatment-item-current div-row'>
-                                <h3>{treatment.name}</h3>
-                                <h4>{dayjs(treatment.date).format('DD.MM.YYYY')}</h4>
-                            </div>
-                            <p>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</p>
-                        </div>
-                        <div className='delete-treatment'>
+                    <TreatmentCardsWrapper key={treatment.id}>
+                        <TreatmentItemWrapper>                            
+                            <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
+                            <P>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</P>
+                        </TreatmentItemWrapper>
+                        <DeleteTreatmentItem>
                             <ClearIcon 
                                 onClick={() => handleRemoveWormTreatment(treatment.id)}
                             />
-                        </div>
-                    </div>
+                        </DeleteTreatmentItem>
+                    </TreatmentCardsWrapper>
                 ))
             }
         </div>

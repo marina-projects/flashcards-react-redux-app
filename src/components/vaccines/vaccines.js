@@ -11,9 +11,11 @@ import { removeVaccine } from '../../features/vaccines/vaccinesSlice';
 import { useDispatch } from 'react-redux';
 
 //components
-import ClearIcon from '@mui/icons-material/Clear';
 import PopupVaccine from '../popupVaccine/popupVaccine';
 
+// styles
+import { TreatmentCardsWrapper, TreatmentItemWrapper, H3, P, DeleteTreatmentItem } from '../../styles';
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Vaccines = () => {
     const vaccines = useSelector(selectVaccines);
@@ -28,24 +30,22 @@ const Vaccines = () => {
     return (
         <div className='vaccines div-column'>
             <h2>Vaccines</h2>
-            <PopupVaccine />
-            
+            <PopupVaccine />     
             {
                 sortedVaccines.map((vaccine) => (
-                    <div className='vaccines-list div-row' key={vaccine.id}>
-                        <div className='vaccine-item div-column'>
-                            <div className='vaccine-item-current div-row'>
-                                <h3>{vaccine.name}</h3>
-                                <h4>{dayjs(vaccine.date).format('DD.MM.YYYY')}</h4>
-                            </div>
-                            <p>Next vaccine: {dayjs(vaccine.date).add(1, 'year').format('DD.MM.YYYY')}</p>
-                        </div>
-                        <div className='delete-vaccine'>
+                    <TreatmentCardsWrapper
+                        key={vaccine.id}
+                    >
+                        <TreatmentItemWrapper>                            
+                            <H3>{vaccine.name} {dayjs(vaccine.date).format('DD.MM.YYYY')}</H3>
+                            <P>Next vaccine: {dayjs(vaccine.date).add(1, 'year').format('DD.MM.YYYY')}</P>
+                        </TreatmentItemWrapper>
+                        <DeleteTreatmentItem>
                             <ClearIcon 
                                 onClick={() => handleRemove(vaccine.id)}
                             />
-                        </div>
-                    </div>
+                        </DeleteTreatmentItem>
+                    </TreatmentCardsWrapper>
                 ))
             }
         </div>
