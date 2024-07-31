@@ -28,7 +28,7 @@ function App() {
             <Route index element={<MainScreen />}/>
             <Route path='/vaccines' element={<Vaccines />} />
             <Route path='/treatments' element={<Treatments />} />
-            <Route path='/add-new' element={<NewFleaTreatment />} />        
+            <Route path='/settings' element={<NewFleaTreatment />} />        
           </Route>
         </Routes>
     </BrowserRouter> 
