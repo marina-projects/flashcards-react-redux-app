@@ -6,14 +6,12 @@ import dayjs from "dayjs";
 
 //redux
 import { useSelector } from "react-redux";
-import { selectVaccines } from '../../features/vaccines/vaccinesSlice';
-import { selectFleaTreatments } from '../../features/fleaTreatmentSlice/fleaTreatmentSlice';
-import { selectWormTreatments } from '../../features/wormTreatmentSlice/wormTreatmentSlice';
+import { selectVaccines } from '../../features/userTreatments/userTreatmentsSlice';
+import { selectFleaTreatments } from '../../features/userTreatments/userTreatmentsSlice'
+import { selectWormTreatments } from '../../features/userTreatments/userTreatmentsSlice';
 
 //components
-import PopupVaccine from '../popupVaccine/popupVaccine';
-import PopupFleaTreatment from '../popupFleaTreatment/popupFleaTreatment';
-import PopupWormTreatment from '../popupWormTreatment/popupWormTreatment';
+import PopupAddTreatment from '../popupAddTreatment/popupAddTreatment';
 
 const MainScreen = () => {
 
@@ -46,7 +44,7 @@ const MainScreen = () => {
                             <p>Next vaccine: {dayjs(latestVaccine.date).add(1, 'year').format('DD.MM.YYYY')}</p>
                         </div>
                         <div className='add-vaccine-main'>
-                            <PopupVaccine />
+                            <PopupAddTreatment treatmentType='vaccines' title='vaccine'/>
                         </div>
                     </div>
                 ) : <p>No vaccines available</p>
@@ -63,7 +61,7 @@ const MainScreen = () => {
                             <p>Next treatment: {dayjs(latestFleaTreatment.date).add(1, 'month').format('DD.MM.YYYY')}</p>
                         </div>
                         <div className='add-treatment-main'>
-                            <PopupFleaTreatment />
+                            <PopupAddTreatment treatmentType='fleaTreatments' title='treatment'/>
                         </div>
                     </div>
                 ) : <p>No flea treatments available</p>
@@ -80,11 +78,12 @@ const MainScreen = () => {
                             <p>Next vaccine: {dayjs(latestWormTreatment.date).add(1, 'year').format('DD.MM.YYYY')}</p>
                         </div>
                         <div className='add-treatment-main'>
-                            <PopupWormTreatment />
+                            <PopupAddTreatment treatmentType='wormTreatments' title='treatment'/>
                         </div>
                     </div>
                 ) : <p>No worm treatments available</p>
             }
+
         </div>
     )
 }

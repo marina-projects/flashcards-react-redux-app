@@ -6,16 +6,16 @@ import dayjs from "dayjs";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { removeFleaTreatment, selectFleaTreatments } from "../../features/fleaTreatmentSlice/fleaTreatmentSlice";
-import { selectWormTreatments, removeWormTreatment } from '../../features/wormTreatmentSlice/wormTreatmentSlice';
+import { selectWormTreatments, selectFleaTreatments, removeTreatment } from '../../features/userTreatments/userTreatmentsSlice';
+
 
 //components
-import PopupFleaTreatment from '../popupFleaTreatment/popupFleaTreatment';
-import PopupWormTreatment from '../popupWormTreatment/popupWormTreatment';
+import PopupAddTreatment from '../popupAddTreatment/popupAddTreatment';
 
 //styles
 import { DeleteTreatmentItem, TreatmentCardsWrapper, TreatmentItemWrapper, H3, P } from '../../styles';
 import ClearIcon from '@mui/icons-material/Clear';
+
 
 
 const Treatments = () => {
@@ -24,11 +24,11 @@ const Treatments = () => {
     const dispatch = useDispatch();
 
     const handleRemoveFleaTreatment = (id) => {
-        dispatch(removeFleaTreatment({ id }));
+        dispatch(removeTreatment({ id, treatmentType: 'fleaTreatments' }));
     };
 
     const handleRemoveWormTreatment = (id) => {
-        dispatch(removeWormTreatment({ id }));
+        dispatch(removeTreatment({ id, treatmentType: 'wormTreatments' }));
     };
 
     const sortedFleaTreatments = Object.values(fleaTreatments).sort((a, b) => dayjs(b.date).diff(dayjs(a.date)));
@@ -38,7 +38,7 @@ const Treatments = () => {
         <div className='treatments div-column'>
             <h2>Treatments</h2>
             <H3>Flea treatments</H3>
-            <PopupFleaTreatment />
+            <PopupAddTreatment treatmentType='fleaTreatments' title='treatment'/>
             {
                 sortedFleaTreatments.map((treatment) => (
                     <TreatmentCardsWrapper key={treatment.id}>
@@ -55,7 +55,7 @@ const Treatments = () => {
                 ))
             }
             <H3>Worm treatments</H3>
-            <PopupWormTreatment />
+            <PopupAddTreatment treatmentType='wormTreatments' title='treatment'/>
             {
                 sortedWormTreatments.map((treatment) => (
                     <TreatmentCardsWrapper key={treatment.id}>

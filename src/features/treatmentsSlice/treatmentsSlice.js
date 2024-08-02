@@ -1,7 +1,13 @@
+//this is a slice for fetching and managing treatments names in auticomlete forms
+
+//redux
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+//firebase
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { db } from "../../firebase";
 
+//fetching treatment names
 export const fetchTreatments = createAsyncThunk(
     'treatments/fetchTreatments',
     async (treatmentType, { rejectWithValue }) => {
@@ -22,6 +28,8 @@ export const fetchTreatments = createAsyncThunk(
     }
 );
 
+
+//adding new treatment name
 export const addTreatment = createAsyncThunk(
     'treatments/addTreatment',
     async ({ treatmentType, newTreatment }, { rejectWithValue }) => {
@@ -58,11 +66,11 @@ const treatmentsSlice = createSlice({
             })
             .addCase(fetchTreatments.fulfilled, (state, action) => {
                 const { treatmentType, treatments } = action.payload;
-                if (treatmentType === 'flea-treatments') {
+                if (treatmentType === 'fleaTreatments') {
                     state.fleaTreatments = treatments;
-                } else if (treatmentType === 'worm-treatments') {
+                } else if (treatmentType === 'wormTreatments') {
                     state.wormTreatments = treatments;
-                } else if (treatmentType === 'vaccine-treatments') {
+                } else if (treatmentType === 'vaccines') {
                     state.vaccineTreatments = treatments;
                 }
                 state.isLoading = false;
@@ -75,11 +83,11 @@ const treatmentsSlice = createSlice({
             })
             .addCase(addTreatment.fulfilled, (state, action) => {
                 const { treatmentType, id, name, createdAt } = action.payload;
-                if (treatmentType === 'flea-treatments') {
+                if (treatmentType === 'fleaTreatments') {
                     state.fleaTreatments.push({ id, name, createdAt });
-                } else if (treatmentType === 'worm-treatments') {
+                } else if (treatmentType === 'wormTreatments') {
                     state.wormTreatments.push({ id, name, createdAt });
-                } else if (treatmentType === 'vaccine-treatments') {
+                } else if (treatmentType === 'vaccines') {
                     state.vaccineTreatments.push({ id, name, createdAt });
                 }
             })

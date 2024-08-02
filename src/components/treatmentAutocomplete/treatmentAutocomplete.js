@@ -9,9 +9,9 @@ const filter = createFilterOptions();
 const TreatmentAutocomplete = ({ treatmentType, name, setName }) => {
     const dispatch = useDispatch();
     const treatmentNames = useSelector(state => {
-        if (treatmentType === 'flea-treatments') return selectFleaTreatments(state);
-        if (treatmentType === 'worm-treatments') return selectWormTreatments(state);
-        if (treatmentType === 'vaccine-treatments') return selectVaccineTreatments(state);
+        if (treatmentType === 'fleaTreatments') return selectFleaTreatments(state);
+        if (treatmentType === 'wormTreatments') return selectWormTreatments(state);
+        if (treatmentType === 'vaccines') return selectVaccineTreatments(state);
         return [];
     });
 
@@ -45,7 +45,7 @@ const TreatmentAutocomplete = ({ treatmentType, name, setName }) => {
                     if (inputValue !== '' && !isExisting) {
                         filtered.push({
                             inputValue,
-                            name: `Add "${inputValue}"`,
+                            name: `Add ${inputValue}`,
                         });
                     }
                     return filtered;
