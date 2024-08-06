@@ -38,7 +38,7 @@ const Header = () => {
             <HeaderWrapper>
                 <img src={MenuIcon} alt=''/>
                 <h2>{getTitle()}</h2>
-                <img src={NotificationIcon} alt=''/>
+                <img src={NotificationIcon} width='20px' height='auto' alt=''/>
             </HeaderWrapper>
             <FooterWrapper >        
                 <NavLink to='/'>Main</NavLink>

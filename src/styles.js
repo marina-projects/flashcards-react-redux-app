@@ -52,6 +52,7 @@ export const FooterWrapper = styled(DivRow)`
     color: white;
     text-transform: uppercase;
     height: 50px;
+    
     position: fixed;
     top: 0;
     gap: 50px;
@@ -122,7 +123,7 @@ export const UserGreetingWrap = styled(DivRow)`
     justify-content: space-between;
     padding: 20px;
     & > img {
-        width: 30%;
+        width: 28%;
     };
 `
 
