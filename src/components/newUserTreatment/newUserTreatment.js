@@ -1,7 +1,7 @@
 import './newUserTreatment.css';
 
 //libraries
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
 
@@ -21,6 +21,27 @@ const NewUserTreatment = ({ treatmentType, title }) => {
 
     const [name, setName] = useState('');
     const [date, setDate] = useState(dayjs());
+    const [nextDate, setNextDate] = useState(dayjs());
+
+    useEffect(() => {
+        let newNextDate = dayjs();
+
+        switch (treatmentType) {
+            case 'vaccines':
+                newNextDate = date.add(1, 'year');
+                break;
+            case 'fleaTreatments':
+                newNextDate = date.add(1, 'month');
+                break;
+            case 'wormTreatments':
+                newNextDate = date.add(3, 'month');
+                break;
+            default:
+                break;
+        }
+
+        setNextDate(newNextDate);
+    }, [treatmentType, date]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +49,7 @@ const NewUserTreatment = ({ treatmentType, title }) => {
             id: uuidv4(),
             name,
             date: date.toISOString(),
+            nextDate: nextDate.toISOString(),
             treatmentType
         };
         dispatch(addTreatment(newTreatment));
@@ -46,6 +68,12 @@ const NewUserTreatment = ({ treatmentType, title }) => {
                     defaultValue={dayjs('2022-04-17')}
                     value={date}
                     onChange={(newValue) => setDate(newValue)}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <DatePicker 
+                    defaultValue={nextDate}
+                    value={nextDate}
+                    onChange={(newValue) => setNextDate(newValue)}
                     renderInput={(params) => <TextField {...params} />}
                 />
                 <IconButton type='submit'>

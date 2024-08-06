@@ -44,7 +44,7 @@ const Treatments = () => {
                     <TreatmentCardsWrapper key={treatment.id}>
                         <TreatmentItemWrapper >
                             <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
-                            <P>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</P>
+                            <P>Next treatment: {dayjs(treatment.nextDate).format('DD.MM.YYYY')}</P>
                         </TreatmentItemWrapper>
                         <DeleteTreatmentItem>
                             <ClearIcon 
@@ -61,7 +61,7 @@ const Treatments = () => {
                     <TreatmentCardsWrapper key={treatment.id}>
                         <TreatmentItemWrapper>                            
                             <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
-                            <P>Next treatment: {dayjs(treatment.date).add(1, 'month').format('DD.MM.YYYY')}</P>
+                            <P>Next treatment: {dayjs(treatment.nextDate).format('DD.MM.YYYY')}</P>
                         </TreatmentItemWrapper>
                         <DeleteTreatmentItem>
                             <ClearIcon 

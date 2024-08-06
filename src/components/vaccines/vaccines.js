@@ -33,7 +33,7 @@ const Vaccines = () => {
                 <TreatmentCardsWrapper key={vaccine.id}>
                     <TreatmentItemWrapper>
                         <H3>{vaccine.name} {dayjs(vaccine.date).format('DD.MM.YYYY')}</H3>
-                        <P>Next vaccine: {dayjs(vaccine.date).add(1, 'year').format('DD.MM.YYYY')}</P>
+                        <P>Next vaccine: {dayjs(vaccine.nextDate).format('DD.MM.YYYY')}</P>
                     </TreatmentItemWrapper>
                     <DeleteTreatmentItem>
                         <ClearIcon onClick={() => handleRemove(vaccine.id)} />

@@ -9,11 +9,12 @@ const userTreatmentsSlice = createSlice({
     },
     reducers: {
         addTreatment: (state, action) => {
-            const { id, date, name, treatmentType } = action.payload;
+            const { id, date, name, treatmentType, nextDate } = action.payload;
             state[treatmentType][id] = {
                 id,
                 date,
                 name,
+                nextDate
             };
         },
         removeTreatment: (state, action) => {
