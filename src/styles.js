@@ -91,6 +91,7 @@ export const TreatmentCardsWrapper = styled.div`
     flex-direction: flex-row;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     background: #f5f5f5;
     border-radius: 10px;
     padding: 15px 20px;
@@ -101,7 +102,7 @@ export const TreatmentCardsWrapper = styled.div`
 `;
 
 export const TreatmentItemWrapper = styled.div`
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: flex-row;
     flex-wrap: wrap;
@@ -110,6 +111,24 @@ export const TreatmentItemWrapper = styled.div`
     gap: 5px;
 `;
 
-export const DeleteTreatmentItem = styled.div`
+export const ButtonTreatmentItem = styled.div`
     width: 10%;
 `;
+
+// Main
+
+export const UserGreetingWrap = styled(DivRow)`
+    width: 90%;
+    justify-content: space-between;
+    padding: 20px;
+    & > img {
+        width: 30%;
+    };
+`
+
+export const UserGreetingTextWrap = styled(DivColumn)`
+    width: 65%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+`

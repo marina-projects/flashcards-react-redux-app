@@ -13,7 +13,7 @@ import { selectWormTreatments, selectFleaTreatments, removeTreatment } from '../
 import PopupAddTreatment from '../popupAddTreatment/popupAddTreatment';
 
 //styles
-import { DeleteTreatmentItem, TreatmentCardsWrapper, TreatmentItemWrapper, H3, P } from '../../styles';
+import { ButtonTreatmentItem, TreatmentCardsWrapper, TreatmentItemWrapper, H3, P } from '../../styles';
 import ClearIcon from '@mui/icons-material/Clear';
 
 
@@ -46,11 +46,11 @@ const Treatments = () => {
                             <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
                             <P>Next treatment: {dayjs(treatment.nextDate).format('DD.MM.YYYY')}</P>
                         </TreatmentItemWrapper>
-                        <DeleteTreatmentItem>
+                        <ButtonTreatmentItem>
                             <ClearIcon 
                                 onClick={() => handleRemoveFleaTreatment(treatment.id)}
                             />
-                        </DeleteTreatmentItem>
+                        </ButtonTreatmentItem>
                     </TreatmentCardsWrapper>
                 ))
             }
@@ -63,11 +63,11 @@ const Treatments = () => {
                             <H3>{treatment.name} {dayjs(treatment.date).format('DD.MM.YYYY')}</H3>
                             <P>Next treatment: {dayjs(treatment.nextDate).format('DD.MM.YYYY')}</P>
                         </TreatmentItemWrapper>
-                        <DeleteTreatmentItem>
+                        <ButtonTreatmentItem>
                             <ClearIcon 
                                 onClick={() => handleRemoveWormTreatment(treatment.id)}
                             />
-                        </DeleteTreatmentItem>
+                        </ButtonTreatmentItem>
                     </TreatmentCardsWrapper>
                 ))
             }

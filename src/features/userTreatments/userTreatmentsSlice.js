@@ -14,7 +14,8 @@ const userTreatmentsSlice = createSlice({
                 id,
                 date,
                 name,
-                nextDate
+                nextDate,
+                treatmentType
             };
         },
         removeTreatment: (state, action) => {

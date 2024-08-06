@@ -10,9 +10,9 @@ import { FooterWrapper, FooterWrapperMobile, HeaderWrapper } from "../../styles"
 import MainIcon from '../../images/home-icon.svg';
 import InjectionIcon from '../../images/injection-icon.png';
 import PillIcon from '../../images/pill-icon.png';
-import SettingIcon from '../../images/settings-icon.svg';
 import AccountIcon from '../../images/account-icon.svg';
 import MenuIcon from '../../images/menu-icon.svg';
+import NotificationIcon from '../../images/notification-icon.svg';
 
 const Header = () => {
 
@@ -38,7 +38,7 @@ const Header = () => {
             <HeaderWrapper>
                 <img src={MenuIcon} alt=''/>
                 <h2>{getTitle()}</h2>
-                <img src={AccountIcon} alt=''/>
+                <img src={NotificationIcon} alt=''/>
             </HeaderWrapper>
             <FooterWrapper >        
                 <NavLink to='/'>Main</NavLink>
@@ -50,7 +50,7 @@ const Header = () => {
                 <NavLink to='/'><img src={MainIcon} alt=''/></NavLink>
                 <NavLink to='/vaccines'><img src={InjectionIcon} alt=''/></NavLink>
                 <NavLink to='/treatments'><img src={PillIcon} alt=''/></NavLink>
-                <NavLink to='/settings'><img src={SettingIcon} alt=''/></NavLink>
+                <NavLink to='/settings'><img src={AccountIcon} alt=''/></NavLink>
             </FooterWrapperMobile>
             
             <Outlet />

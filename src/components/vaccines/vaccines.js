@@ -12,7 +12,7 @@ import { selectVaccines, removeTreatment } from '../../features/userTreatments/u
 import ClearIcon from '@mui/icons-material/Clear';
 
 // styles
-import { TreatmentCardsWrapper, TreatmentItemWrapper, H3, P, DeleteTreatmentItem } from '../../styles';
+import { TreatmentCardsWrapper, TreatmentItemWrapper, H3, P, ButtonTreatmentItem } from '../../styles';
 import PopupAddTreatment from '../popupAddTreatment/popupAddTreatment';
 
 const Vaccines = () => {
@@ -35,9 +35,9 @@ const Vaccines = () => {
                         <H3>{vaccine.name} {dayjs(vaccine.date).format('DD.MM.YYYY')}</H3>
                         <P>Next vaccine: {dayjs(vaccine.nextDate).format('DD.MM.YYYY')}</P>
                     </TreatmentItemWrapper>
-                    <DeleteTreatmentItem>
+                    <ButtonTreatmentItem>
                         <ClearIcon onClick={() => handleRemove(vaccine.id)} />
-                    </DeleteTreatmentItem>
+                    </ButtonTreatmentItem>
                 </TreatmentCardsWrapper>
             ))}
         </div>
