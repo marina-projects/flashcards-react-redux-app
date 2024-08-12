@@ -20,6 +20,14 @@ export const DivRow = styled.div`
     align-items: center;
 `
 
+export const H1 = styled.h3`
+    font-size: 36px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+
+`
+
 export const H3 = styled.h3`
     font-size: 16px;
 `
@@ -28,7 +36,7 @@ export const P = styled.p`
     font-weight: 400;
     width: 100%;
 `
-//Same elements
+//Wrappers
 
 export const HeaderWrapper = styled(DivRow)`
     background-color: var(--main-green);
@@ -81,6 +89,52 @@ export const FooterWrapperMobile = styled(FooterWrapper)`
     }
     
 `
+
+// Buttons
+
+export const Button = styled.button`
+    background-color: transparent;
+    border: none;
+    padding: 12px 36px;
+    font-size: 16px;
+`
+export const ContrastButton = styled(Button)`
+    background-color: var(--main-pink);
+    color: white;
+    border-radius: 30px;
+`
+
+
+// Inputs
+
+export const Input = styled.input`
+    height: 50px;
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+    padding: 5px 12px;
+    width: 75%;
+    font-size: 14px;
+`
+ 
+// SignIn/LogIn area
+
+export const LoginWrapper = styled(DivColumn)`
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    height: 100%;
+    gap: 20px;
+    
+`
+export const LoginButtonArea = styled(DivColumn)`
+    margin-top: 50px;
+    & > button {
+        font-size: 14px;
+        text-decoration: underline;
+        padding: 5px;
+    }
+`
+
 
 
 

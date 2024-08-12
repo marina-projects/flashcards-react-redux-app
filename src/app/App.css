@@ -38,6 +38,7 @@ a {
 
 :root {
   --main-green: #00A898;
+  --main-pink: #F29191;
 }
 
 p, h1, h2, h3, h4 {
@@ -49,4 +50,5 @@ p, h1, h2, h3, h4 {
   width: 100%;
   flex-direction: column;
   padding-top: 80px;
+  height: 100vh;
 }

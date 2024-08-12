@@ -68,14 +68,15 @@ const MainScreen = () => {
                         </TreatmentItemWrapper>
                         <ButtonTreatmentItem>
                             <NavLink to={getPath(treatment.treatmentType)}><img src={AddIcon} alt=''/></NavLink>
-                        </ButtonTreatmentItem>
-                        
+                        </ButtonTreatmentItem>                        
                     </TreatmentCardsWrapper>
                     
                 ))
             ) : (
                 <p>No treatments available</p>
             )}
+            <NavLink to='/signup'>Sign Up</NavLink>
+            <NavLink to='/login'>Login</NavLink>
         </DivColumn>
     );
 }

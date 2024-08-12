@@ -16,7 +16,7 @@ import MainScreen from '../components/main/mainScreen';
 import Vaccines from '../components/vaccines/vaccines';
 import Treatments from '../components/treatments/treatments';
 import UserSettings from '../components/settings/userSettings';
-
+import LoginPage from '../components/loginPage/loginPage';
 
 function App() {
   return (
@@ -28,7 +28,8 @@ function App() {
             <Route index element={<MainScreen />}/>
             <Route path='/vaccines' element={<Vaccines />} />
             <Route path='/treatments' element={<Treatments />} />
-            <Route path='/settings' element={<UserSettings />} /> 
+            <Route path='/settings' element={<UserSettings/>} />
+            <Route path='/login' element={<LoginPage />} />
           </Route>
         </Routes>
     </BrowserRouter> 
