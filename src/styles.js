@@ -135,7 +135,9 @@ export const LoginButtonArea = styled(DivColumn)`
     }
 `
 
-
+export const ErrorMessage = styled(DivColumn)`
+    color: #c10a0a;
+`
 
 
 // Treatments wrappers
