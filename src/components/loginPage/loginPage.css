@@ -16,3 +16,10 @@ form {
     width: 100%;
 
 }
+
+.reset-password {
+    font-size: 14px;
+    text-decoration: underline;
+    margin-bottom: 40px;
+    margin-top: -30px;
+}

@@ -8,6 +8,10 @@ import CssBaseline from '@mui/material/CssBaseline'; // Импортируем C
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
+//redux
+import { selectUsers } from '../features/users/usersSlice';
+import { useSelector } from 'react-redux';
+
 
 //components
 import Header from '../components/header/header';
@@ -18,22 +22,32 @@ import Treatments from '../components/treatments/treatments';
 import UserSettings from '../components/settings/userSettings';
 import LoginPage from '../components/loginPage/loginPage';
 
+
 function App() {
+
+  const user = useSelector(selectUsers);
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <CssBaseline /> {/* Добавляем CssBaseline */}
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Header />}>
-            <Route index element={<MainScreen />}/>
-            <Route path='/vaccines' element={<Vaccines />} />
-            <Route path='/treatments' element={<Treatments />} />
-            <Route path='/settings' element={<UserSettings/>} />
-            <Route path='/login' element={<LoginPage />} />
-          </Route>
-        </Routes>
-    </BrowserRouter> 
-    </LocalizationProvider>
+    <>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <CssBaseline /> {/* Добавляем CssBaseline */}
+        {user.currentUser ?
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<Header />}>
+                <Route index element={<MainScreen />}/>
+                <Route path='/vaccines' element={<Vaccines />} />
+                <Route path='/treatments' element={<Treatments />} />
+                <Route path='/settings' element={<UserSettings/>} />
+                
+              </Route>
+            </Routes>
+          </BrowserRouter> :
+          <LoginPage />
+        }
+      </LocalizationProvider>
+    </>
+    
     
   );
 }

@@ -8,13 +8,37 @@ import dayjs from "dayjs";
 //redux
 import { useSelector } from "react-redux";
 import { selectVaccines, selectFleaTreatments, selectWormTreatments } from '../../features/userTreatments/userTreatmentsSlice';
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/users/usersSlice";
 
 //styles
-import { H3, P, TreatmentCardsWrapper, TreatmentItemWrapper, ButtonTreatmentItem, DivColumn } from '../../styles';
+import { H3, P, TreatmentCardsWrapper, TreatmentItemWrapper, ButtonTreatmentItem, DivColumn, Button } from '../../styles';
 import AddIcon from '../../images/add-icon.svg';
 import UserGreeting from '../userGreeting/userGreeting';
 
+//firebase
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+
+
+
 const MainScreen = () => {
+
+    const dispatch = useDispatch();
+
+    const handleSignOut = () => {
+        if(window.confirm('Are you sure?')) {
+            signOut(auth).then(() => {
+                dispatch(setUser(null));
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+        
+    }
+
+ 
+      
 
     const vaccines = useSelector(selectVaccines);
     const fleaTreatments = useSelector(selectFleaTreatments);
@@ -75,8 +99,8 @@ const MainScreen = () => {
             ) : (
                 <p>No treatments available</p>
             )}
-            <NavLink to='/signup'>Sign Up</NavLink>
             <NavLink to='/login'>Login</NavLink>
+            <Button onClick={handleSignOut}>Logout</Button>
         </DivColumn>
     );
 }
